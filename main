@@ -1,0 +1,17 @@
+#!/bin/env python3
+import sys
+import requests
+
+def main(av):
+    url = "https://api.shrtco.de/v2/shorten?url={}".format(av[1])
+    content = requests.get(url)
+    data = content.json()
+    if (data['ok'] == True):
+        print(data['result']['short_link'])
+        print(data['result']['short_link2'])
+        print(data['result']['short_link3'])
+        print(data['result']['original_link'])
+    else:
+        print("error")
+
+main(sys.argv)
